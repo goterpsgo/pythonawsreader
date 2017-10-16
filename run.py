@@ -37,7 +37,6 @@ def results():
 		for reservation in results["Reservations"]:
 			for instance in reservation["Instances"]:
 				new_instance = ec2_model.Instance(PublicIpAddress=instance["PublicIpAddress"], PrivateIpAddress=instance["PrivateIpAddress"], NetworkInterfaces=json.dumps(instance["NetworkInterfaces"], default=datetime_handler))
-				# session = ec2_model.return_session()
 				ec2_model.session.add(new_instance)
 				ec2_model.session.commit()
 
