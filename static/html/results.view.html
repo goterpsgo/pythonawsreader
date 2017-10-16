@@ -4,11 +4,11 @@
 	<div><input type="submit" value="submit"><input type="reset"></div>
 </form>
 <div>&nbsp;</div>
-<table ng-repeat="iter_reservation in results['Reservations']">
+<table>
 	<tr>
 		<td>Public IP</td><td>Private IP</td><td>Network Interfaces</td>
 	</tr>
-	<tr ng-repeat="iter_instance in iter_reservation['Instances']" style="border-style: solid;">
+	<tr ng-repeat="iter_instance in results" style="border-style: solid; vertical-align: top;">
 		<td>{{iter_instance['PublicIpAddress']}}</td>
 		<td>{{iter_instance['PrivateIpAddress']}}</td>
 		<td>{{iter_instance['NetworkInterfaces']}}</td>

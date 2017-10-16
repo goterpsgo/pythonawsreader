@@ -22,8 +22,9 @@
                 .then(
                     function(results) {
                         console.log('Posted results');
-                        console.log(results.data);
-                        $scope.results = results.data;
+                        get_results();
+                        // console.log(results.data);
+                        // $scope.results = results.data;
                     }
                 )
         }
@@ -32,7 +33,7 @@
             ResultsService._get_results()
                 .then(
                     function(results) {
-                        console.log(results);
+                        $scope.results = results;
                     }
                 );
         }

@@ -29,7 +29,6 @@
         }
 
         function post_result(form_data) {
-            console.log(form_data);
             var deferred = $q.defer();
             var config = {
                 headers : {

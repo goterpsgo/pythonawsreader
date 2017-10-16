@@ -3,6 +3,7 @@
 import json
 import boto3
 import datetime
+import ec2_model
 from flask import Flask, render_template, request
 
 app = Flask(__name__,
@@ -31,10 +32,25 @@ def results():
 		data = json.loads(request.data)
 
 		ec2 = boto3.client("ec2", region_name="us-east-1", aws_access_key_id=str(data["access_key_id"]), aws_secret_access_key=str(data["secret_access_key"]))
-		# ec2 = boto3.client("ec2", region_name="us-east-1")
 		results = ec2.describe_instances()
+
+		for reservation in results["Reservations"]:
+			for instance in reservation["Instances"]:
+				new_instance = ec2_model.Instance(PublicIpAddress=instance["PublicIpAddress"], PrivateIpAddress=instance["PrivateIpAddress"], NetworkInterfaces=json.dumps(instance["NetworkInterfaces"], default=datetime_handler))
+				# session = ec2_model.return_session()
+				ec2_model.session.add(new_instance)
+				ec2_model.session.commit()
+
 		return json.dumps(results, default=datetime_handler)
 	else:
-		return json.dumps(dummy_data) 
+		results = []
+		for row in ec2_model.session.query(ec2_model.Instance):
+			result = {}
+			result["PrivateIpAddress"] = row.PrivateIpAddress
+			result["PublicIpAddress"] = row.PublicIpAddress
+			result["NetworkInterfaces"] = row.NetworkInterfaces
+			results.append(result)
+
+		return json.dumps(results) 
 
 app.run()
