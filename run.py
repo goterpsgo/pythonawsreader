@@ -30,8 +30,8 @@ def results():
 
 		data = json.loads(request.data)
 
-		# ec2 = boto3.client("ec2", region_name="us-east-1", aws_access_key_id=str(data["access_key_id"]), aws_secret_access_key=str(data["secret_access_key"]))
-		ec2 = boto3.client("ec2", region_name="us-east-1")
+		ec2 = boto3.client("ec2", region_name="us-east-1", aws_access_key_id=str(data["access_key_id"]), aws_secret_access_key=str(data["secret_access_key"]))
+		# ec2 = boto3.client("ec2", region_name="us-east-1")
 		results = ec2.describe_instances()
 		return json.dumps(results, default=datetime_handler)
 	else:
