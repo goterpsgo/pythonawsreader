@@ -63,6 +63,7 @@
                     function(results) {
                         console.log('Posted results');
                         console.log(results.data);
+                        $scope.results = results.data;
                     }
                 )
         }
