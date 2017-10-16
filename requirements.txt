@@ -1,6 +1,3 @@
 Flask
 Flask-SQLAlchemy
-flask-restful
-uwsgi
-jsonschema
-
+boto3
