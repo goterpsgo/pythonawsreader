@@ -1,5 +1,5 @@
 # pythonawsreader
-Demo SPA to read AWS resource data
+Demo SPA to read AWS resource data. Resource data is collected from AWS API and saved in database.
 
 Run pip to ensure all dependencies are met and are up to date:
 `pip install -r requirements.txt`
