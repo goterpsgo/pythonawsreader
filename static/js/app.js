@@ -1,3 +1,6 @@
+import angular from 'angular';
+import ui from 'angular-ui-router';
+
 (function() {
 	'use strict';
 
