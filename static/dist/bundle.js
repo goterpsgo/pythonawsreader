@@ -8827,7 +8827,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	}
 
 	function run() {
-		console.log('Running...');
+		console.log('Running with bundle...');
 	}
 
 })();

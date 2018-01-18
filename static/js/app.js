@@ -25,7 +25,7 @@ import ui from 'angular-ui-router';
 	}
 
 	function run() {
-		console.log('Running...');
+		console.log('Running with bundle...');
 	}
 
 })();
